@@ -3,12 +3,37 @@
  */
 package sequality;
 
-public class App {
-    public String getGreeting() {
-        return "Hello World!";
-    }
+import java.util.stream.IntStream;
 
-    public static void main(String[] args) {
-        System.out.println(new App().getGreeting());
-    }
+public class App {
+  public String getGreeting() {
+    return "Hello World!";
+  }
+
+  public static void main(String[] args) {
+    System.out.println(new App().getGreeting());
+
+    int num1 = 2;
+    int num2 = 3;
+    System.out.printf("Sum of %d and %d is %d. Average is %s.\n",
+        num1,
+        num2,
+        Calculate.sum(num1, num2),
+        Calculate.average(num1, num2));
+
+    int from = 1;
+    int to = 10;
+    var numbers = IntStream.rangeClosed(from, to).toArray();
+    System.out.printf("Sum of %d to %d is %d. Average is %s.\n",
+        from,
+        to,
+        Calculate.sum(numbers),
+        Calculate.average(numbers));
+
+    System.out.printf("Sum of odd of %d to %d is %d. Sum of even is %d.\n",
+        from,
+        to,
+        Calculate.sumOdd(numbers),
+        Calculate.sumEven(numbers));
+  }
 }
